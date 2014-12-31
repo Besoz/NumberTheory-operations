@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+		<script>
+			var searchTextFeild;
+			var books;
+			var resultList;
+
+			// This function will be called
+			// When the page is loaded
+
+			function ready() {
+				searchTextFeild = document.getElementById("search");
+				books = ["Inferno by Dan Brown (Doubleday)", "Divergent by Veronica Roth (HarperCollins/Tegen)", "Gone Girl by Gillian Flynn (Crown)", "Sycamore Row by John Grisham (Doubleday)", "The Husband's Secret by Liane Moriarty (Putnam)", "Safe Haven by Nicholas Sparks (Grand Central)", "Allegiant by Veronica Roth (HarperCollins/Tegen)", "Insurgent by Veronica Roth (HarperCollins/Tegen)", "The Cuckoo's Calling by Robert Galbraith (L, B/Mulholland)", "The Book Thief by Markus Zusak (Knopf)", "And the Mountains Echoed by Khaled Hosseini (Riverhead)", "The Great Gatsby by F. Scott Fitzgerald (Scribner)", "The Hit by David Baldacci (Grand Central)", "The Fault in Our Stars by John Green (Dutton)", "Ender's Game by Orson Scott Card (Tor)", "Hopeless by Colleen Hoover (Colleen Hoover)", "Entwined with You by Sylvia Day (Berkley)", "Never Go Back by Lee Child (Delacorte)", "Mockingjay by Suzanne Collins (Scholastic)", "Alex Cross, Run by James Patterson (Little, Brown)"];
+				resultList = document.getElementById('results');
+
+				searchTextFeild.onkeyup = function(event) {
+					clearItems();
+					for (var i = 0; i < books.length; i++) {
+						if (books[i].toLowerCase().indexOf(searchTextFeild.value.toLowerCase()) >-1 && searchTextFeild.value != "") {
+							addItem(books[i]);
+						}
+					}
+				};
+			}
+
+			function clearItems() {
+				resultList.innerHTML = '';
+			}
+
+			function addItem(title) {
+				var newItemElement = document.createElement('li');
+				newItemElement.innerHTML = title;
+				resultList.appendChild(newItemElement);
+			}
+
+			window.onload = ready;
+		</script>
+	</head>
+
+	<body>
+
+		<h4>Search Books (Case insensitive):</h4>
+		<input id="search" placeholder="Enter a keyword" type="text" onkeyup="onKeyUpFun()">
+
+		<ul id="results"></ul>
+
+		<!-- <p>
+			Starting with this page add the following functionality:
+		</p>
+		<p>
+			Searching a list of book titles by typing keywords in the input field.
+		</p>
+		<p>
+			Result items for the search should update instantly as characters are being typed.
+		</p>
+		<h5>Hints:</h5>
+		<ul>
+			<li>
+				The full list of book titles to search through is stored in a variable named
+				<code>
+					books
+				</code>
+				.
+			</li>
+			<li>
+				You can make use of the
+				<code>
+					onkeyup
+				</code>
+				event handler.
+			</li>
+			<li>
+				You can use
+				<code>
+					string1.indexOf(string2)
+				</code>
+				to check for presence of string2 within string1 (returns -1 if not present)
+			</li>
+
+		</ul> -->
+	</body>
+</html>
